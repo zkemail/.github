@@ -1,5 +1,5 @@
 # ZK Email
-This is the official organization for zk proof of email projects, funded by 0xPARC and EF PSE; it is created and maintained by [yush_g](https://twitter.com/yush_g) and [sora suegami](https://twitter.com/SoraSue77). 
+This is the official organization for zk proof of email projects, funded by 0xPARC and EF PSE; it is created and maintained by [yush_g](https://twitter.com/yush_g), [sampriti](https://twitter.com/sampriti0), and [sora suegami](https://twitter.com/SoraSue77). 
 
 ## Circom zk-email
 We have an [end-to-end circom implementation](https://github.com/zk-email-verify/zk-email-verify/) with a live demo on Goerli at [https://zkemail.xyz](https://zkemail.xyz). It takes about 6 minutes to run in browser and does a 1gb download, hence our desire to work on a halo2 version. We also have a [regex library that does circom codegen for arbitrary regex strings on CLI](https://github.com/zk-email-verify/zk-regex/). 
