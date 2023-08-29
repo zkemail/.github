@@ -14,10 +14,18 @@ We currently have a fast client side proof (~20 seconds) with split-up deployed 
 ## Email Wallet
 Using circom zk-email, we have a demo of a wallet signing flow only using emails instead of traditional seed phrases. You can try a demo of sending ERC20s via sending emails at [sendeth.org](https://sendeth.org), view the docs at [docs.sendeth.org](http://docs.sendeth.org), and see the slides at [slides.prove.email](http://slides.prove.email). We are adding an extensions layer and privacy layer to allow developers to trigger arbitrary Ethereum functions from email subjects. We intend for this to be a powerful web3 onboarding protocol.
 
-## Other public goods
-We have produced serveral OSS public goods. One is a [halo2 wasm benchmarking repo](https://github.com/Divide-By-0/halo2-secp) that runs any halo2 wasm code in the browser on 100 instances in parallel for any browser on any operating system (mobile or desktop), and spits out the mean running time and variance -- we intend to library-ify this soon for others to use. 
+## Relayer
+Our open source [relayer](https://github.com/zkemail/relayer/) allows anyone to self-host or cloud-host with the ability to:
+1) Use our Dockerimage to immediately deploy any ZK proof to a rapid, autoscaled, 64 core proving instance to do proofs in the cloud. Note that privacy will be leaked to AWS in this case, so the only usecase is succinctness.
+2) Interface with the ZK proving protocol via sending emails, via built-in SMTP and IMAP servers that can authenticate with any gmail account
 
-If you are interested in helping, reach out [us](mailto:aayushg@mit.edu)! We are looking for help on making things cleaner libraries, novel zk optimizations, applications in the proof of identity and defi space, and a rewrite via lasso/jolt and/or new versions of nova. We are hoping in Q3-Q4 2023 to ship the zk email wallet prototype with extensions, end to end, and hope to open the protocol to extension developers in 2023.
+## Other public goods
+We have produced serveral OSS public goods. One is a [halo2 wasm benchmarking repo](https://github.com/Divide-By-0/halo2-secp) that runs any halo2 wasm code in the browser on 100 instances in parallel for any browser on any operating system (mobile or desktop), and spits out the mean running time and variance -- we intend to make this an easy to use NPM package soon for others to use. 
+
+## Help out!
+We are an open source project and decentralized protocol. If you are interested in giving, support us on [Gitcoin Grants](https://explorer.gitcoin.co/#/round/10/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5-62)!
+
+If you are interested in helping, reach out [us](mailto:aayushg@mit.edu)! We are giving grants for full or part time work to deploy libraries of our work to npm, integrate into zk repl, novel zk optimizations, applications in the proof of identity and defi space, and a rewrite via lasso/jolt and/or new versions of nova. We are hoping in Q3-Q4 2023 to ship the zk email wallet prototype with extensions, end to end, and hope to open the protocol to extension developers in 2023 as well as sponsor hackathons and bigger teams to build atop the protocol.
 
 <img width="601" alt="proofofemail coming 10.13.22" src="https://user-images.githubusercontent.com/4804438/195414950-629e0e13-dea2-4f0c-a433-2bf3b2151533.png">
 
