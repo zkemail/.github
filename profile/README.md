@@ -25,7 +25,22 @@ We have produced serveral OSS public goods. One is a [halo2 wasm benchmarking re
 ## Help out!
 We are an open source project and decentralized protocol. If you are interested in giving, support us on [Gitcoin Grants](https://explorer.gitcoin.co/#/round/10/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5-62)!
 
-If you are interested in helping, reach out [us](mailto:aayushg@mit.edu)! We are giving grants for full or part time work to deploy libraries of our work to npm, integrate into zk repl, novel zk optimizations, applications in the proof of identity and defi space, and a rewrite via lasso/jolt and/or new versions of nova. We are hoping in Q3-Q4 2023 to ship the zk email wallet prototype with extensions, end to end, and hope to open the protocol to extension developers in 2023 as well as sponsor hackathons and bigger teams to build atop the protocol.
+If you are interested in helping, reach out us on [email](mailto:aayushg@mit.edu) or telegram/twitter (yush_g)! We are giving grants for full or part time work to deploy libraries of our work to npm, integrate into zk repl, novel zk optimizations, applications in the proof of identity and defi space, and a rewrite via lasso/jolt and/or new versions of nova. We are hoping in Q3-Q4 2023 to ship the zk email wallet prototype with extensions, end to end, and hope to open the protocol to extension developers in 2023 as well as sponsor hackathons and bigger teams to build atop the protocol. Here are specific project ideas, for which we will give a grant for any successful implementation.
+
+Note that our SDK has not reached 1.0 yet, so we will almost certainly push backwards-incompatible breaking changes, especially after our audit in October. We recommend starting work on the following in November.
+
+| Title | Description |
+|-------|-------------|
+| **Issue Resolution** | Resolve issues in [zk-email-verify](https://github.com/zkemail/zk-email-verify/issues) or in the relayer [note: working on full relayer refactor right now]. |
+| **Bountied Whistleblowing Project** | A bounty platform for leaks where people can bid on leaks with specific sources (i.e. from `@___`) and specific text (i.e. includes the phrase "`___`"). It creates an escrow system on chain where others can upload those anonymized leaks along with zk-email proofs that they satisfy the regexes, and reveal only the parts that they want to reveal. |
+| **Arxiv Donation Project** | Put in an arxiv link, and a bot scrapes all the emails out of the PDF/Arxiv itself. It then scrapes all of the emails off of all of the dependencies and allows the donor to reweight them based on where they appeared in the text (i.e. it defaults to something like, cited in previous work or methods splits 40% of the donation, authors cited in intro split 10% of the funds or whatever). It then deploys zk-email wallets for all of them and sends them the money. |
+| **AttestationStation Attestations for Twitter etc** | Convert the Twitter demo to an official AttestationStation attestation. |
+| **Automatic Spotify Splits for AI Voice Royalities** | Prove via zk-email on Spotify confirmation emails and EZKL proof of voi e via ML, that you used an artists voice and split profit with them. Details at https://hackmd.io/Nf8mSSKwRIu3GYyhGq5f9A |
+| **Proof of Residence** | Prove via some emailed confirmation sent by some government or service that you filed taxes or payed for property in that country, and make only the country public. |
+| **Proof of Credit Score** | Enable undercollateralized, crypto lending by allowing someone to prove their credit score on-chain via a confirmaton email from a credit score provider. |
+| **General Oracles** | Prove any oracled data in emails, such as a NASDAQ daily ticker email for the price of some stock, or a Robinhood spot price confirmation. Tradingview Alerts should be able to support this. |
+| **Investor Interest** | Prove some investor emailed you a term sheet, and mint a credential that lets you anonymously disclose how your interactions with them were. |
+
 
 <img width="601" alt="proofofemail coming 10.13.22" src="https://user-images.githubusercontent.com/4804438/195414950-629e0e13-dea2-4f0c-a433-2bf3b2151533.png">
 
