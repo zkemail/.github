@@ -32,11 +32,12 @@ Note that our SDK has not reached 1.0 yet, so we will almost certainly push back
 Core:
 | Title | Description |
 |-------|-------------|
-| **Issue Resolution** | Resolve issues in [zk-email-verify](https://github.com/zkemail/zk-email-verify/issues) or in the relayer [note: working on full relayer refactor right now]. |
+| **Issue Resolution** | Resolve issues in [zk-email-verify](https://github.com/zkemail/zk-email-verify/issues) repo, which can make the core protocol both faster and more secure (especially the high/medium priority ones). The relayer is undergoing refactor right now, but tests would still be very useful to ensure that the refactor doesn't break anything. |
 | **Audit Fixes** | There are a few issues with some of our circom dependencies: reach out to me for bugs! |
 | **Tests on Packages** | Add tests to our [circom packages](https://github.com/zkemail/zk-email-verify/tree/main/packages) to add more circuit tests and circuit unit tests, as well as a test to make sure witness gen works on our twitter-verifier app on each PR, and miscellaneous circuit and contract tests. We are also looking for end to end tests on [sendeth](https://github.com/zkemail/sendeth). |
 | **Deploy Halo2 Benchmarking Library** | Deploy our [halo2 wasm benchmarking library](https://github.com/Divide-By-0/halo2-secp) to cargo, and optionally to an easy-to-use frontend. |
-| **Fix ZK Regex** | Our [Javascript regex to circom library](https://github.com/zkemail/zk-regex) is presently broken, but [regex_to_circom works](https://github.com/zkemail/zk-email-verify/tree/main/libs/regex_to_circom). Add tests to both repos to keep them in sync, and fix the bugs in the Javascript version (and enable the ability to read the regex from a file, not command line).
+| **Fix ZK Regex** | Our [Javascript regex to circom library](https://github.com/zkemail/zk-regex) is presently broken, but [regex_to_circom works](https://github.com/zkemail/zk-email-verify/tree/main/libs/regex_to_circom). Add tests to both repos to keep them in sync, and fix the bugs in the Javascript version (and enable the ability to read the regex from a file, not command line). |
+| **Deploy Package/Website to Auto-deploy Autoscaled Circom Prover Endpoint** | Our [relayer coordinator]([https://github.com/zkemail/zk-regex](https://github.com/zkemail/relayer/blob/main/coordinator.py)) has a [Docker image](https://github.com/zkemail/relayer/blob/main/Dockerfile) for a rapidsnark prover that can store a circom zkey, then have a modal API endpoint and which to receive an input.json. This infrastructure can easily be made into a broader public good with a simple frontend that lets anyone upload whatever circom file they want, then automatically deploy an endpoint for them that would zk-prove it.
 
 Projects:
 | Title | Description |
