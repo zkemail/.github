@@ -54,6 +54,8 @@ Projects:
 | **Multisig Control via Email** | Native integration with SAFE or other multi-sig wallets to allow zk-emails to be direct multisig signers, interacting and approving transactions via emails. |
 | **Legal Discovery** | When subpoena'd, people can turn over only a relevant subset of their emails, not all of them. I don't know if this is robust though, since unless Gmail commits to a Merkle root of all your emails or something, people can always hide whatevver emails they want from the proving process. |
 | **DNSSEC Lobbying** | Lobby providers like Google, Outlook etc, to enable DNSSEC on their keys in order to have more permissionless key upgrades. This is a great fit for someone with less ZK experience or who is really good at talking to people. |
+| **Emailing an Image Mints an NFT** | Add an extra base64 decoding step atop the attachments, and then reformat it to have the image on-chain. This will let someone email you an image, and it automatically goes on-chain (i.e. can directly mint an NFT for it, if you so wish). |
+| **EZKL + ZK Email** | Use machine learning to parse an email contents and reveal only the outputs of the ML model. This can concern NLP summary of an email, or parsing of a document (again if you add the base64 decoding first). |
 
 <img width="601" alt="proofofemail coming 10.13.22" src="https://user-images.githubusercontent.com/4804438/195414950-629e0e13-dea2-4f0c-a433-2bf3b2151533.png">
 
