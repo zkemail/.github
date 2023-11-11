@@ -33,9 +33,18 @@ We have produced serveral OSS public goods. We would like to publish them on NPM
 ## Help out!
 We are an open source project and decentralized protocol. If you are interested in giving, support us on [Gitcoin Grants](https://explorer.gitcoin.co/#/round/10/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5-62)!
 
-If you are interested in helping, reach out us on [email](mailto:aayushg@mit.edu) or telegram/twitter (yush_g)! We will give a small grant (between $50 - $200) for **all good-faith implementations** of any of the projects or issues below, or any completed end-to-end original idea. As of Q4 2023, we have shipped a V1 zk email wallet prototype with extensions on a short-term mainnet demo end to end, and have opened the SDK for email wallet extensions at Zuconnect Hackathon 2023. Here are specific project ideas, for which we will give a grant for any successful implementation.
+If you are interested in helping, reach out us on [email](mailto:aayushg@mit.edu) or telegram/twitter (yush_g)! We will give a small grant (between $50 - $200) for **all good-faith implementations** of any of the projects or issues below, or any completed end-to-end original idea. 
+
+Roadmap:
+Q2 2023: Release initial ZK email SDKs. Release MVP of email wallet at Zuzalu.
+Q3 2023: Expand our core repos into more robust SDK, interate with developers, continue to user test the email wallet V0, prototype the email wallet V1.
+Q4 2023: Shipping a V1 zk email wallet on mainnet (with extensions!) on a short-term mainnet demo end to end. Test-drive SDK at Zuconnect Hackathon 2023. Make ZK regex easier to use.
+Q1 2024: Release polished, one-click button integrations for applications with email wallets. Publish a WalletConnect plugin and release a magic.link-style ephemeral key account abstraction solution.
+Q2 2024: Finish halo2 code audit, as well as a full rewrite with Nova + recursive verification. This will allow a generic email circuit to live on each chain, where people can swap in and out regexes that can be recursively proven in Nova. This will obliviate the need for trusted setups for new zk email proofs, and make audits of future zk email ideas more tighly scoped! 
 
 Our SDK has released a stable 1.0 version as of November, with a first round of audit fixes implemented from Secbit Labs. Note that there may still be breaking, back-incompatible changes pushed.
+
+Here are specific project ideas, for which we will give a grant for any successful implementation.
 
 ### Core Infrastructure Ideas
 
