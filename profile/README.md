@@ -18,7 +18,7 @@ We currently have a fast client side proof (~20 seconds) with split-up deployed 
 Using circom zk-email, we have a demo of a wallet signing flow only using emails instead of traditional seed phrases. You can try our current testnet V0 deployed demo of sending ERC20s via sending emails at [emailwallet.org](https://emailwallet.org), view the docs at [docs.sendeth.org](http://docs.sendeth.org), and see the slides at [slides.prove.email](http://slides.prove.email). We are adding an extensions layer and privacy layer to allow developers to trigger arbitrary Ethereum functions from email subjects, decentralizing and allowing self-hosting the relayer and DKIM key update code, and auditing it for a V1 release. We intend for this to be a powerful web3 onboarding protocol.
 
 ## Relayer
-Our open source [relayer](https://github.com/zkemail/relayer/) allows anyone to self-host or cloud-host with the ability to:
+Our open source [relayer](https://github.com/zkemail/email-wallet/tree/main/packages/relayer) allows anyone to self-host or cloud-host with the ability to:
 1) Use our Dockerimage to immediately deploy any ZK proof to a rapid, autoscaled, 64 core proving instance to do proofs in the cloud. Note that privacy will be leaked to AWS in this case, so the only usecase is succinctness.
 2) Interface with the ZK proving protocol via sending emails, via built-in SMTP and IMAP servers that can authenticate with any gmail account
 
