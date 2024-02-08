@@ -35,6 +35,8 @@ We are an open source project and decentralized protocol. If you are interested 
 
 If you are interested in helping, reach out us on [email](mailto:aayushg@mit.edu) or telegram/twitter (yush_g)! We will give a small grant (between $50 - $200) for **all good-faith implementations** of any of the projects or issues below, or any completed end-to-end original idea. 
 
+For more information on how to contribute look at our [contribution guide](https://zkemail.gitbook.io/zk-email/contributing).
+
 Roadmap:
 Q2 2023: Release initial ZK email SDKs. Release MVP of email wallet at Zuzalu.
 Q3 2023: Expand our core repos into more robust SDK, interate with developers, continue to user test the email wallet V0, prototype the email wallet V1.
