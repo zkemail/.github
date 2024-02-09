@@ -1,6 +1,11 @@
 # ZK Email
 This is the official organization for Proof of Email, created by [yush_g](https://twitter.com/yush_g), [sora suegami](https://twitter.com/SoraSue77), and [sampriti](https://twitter.com/sampriti0). Thanks to the long list of core contributors, including [Vivek](https://twitter.com/viv_boop), [Tyler](https://twitter.com/AtHeartEngineer), [Saleel](https://twitter.com/_saleel), [Rasul](https://curryrasul.com/), and [Andy](https://twitter.com/AndyGuzmanEth) for helping to build out this technology, to the long list of open source contributors who have made pull requests, and to 0xPARC and EF PSE for providing grants to support this work! You can see applications and links at our main website hub, [prove.email](https://prove.email).
 
+## Goals for Q1 2024
+By April 2024, we expect to release 1) a custom account recovery solution via email guardians for account abstraction wallets, and 2) a login with zk email flow with ECDSA key authorization. 
+1) The flow of account recovery will be that AA wallets specify email addresses as guardians, those email addresses receive emails to accept gaurdianship, and if the keys are ever lost and the wallet needs to be recovered, then guardians can simply send an email with the users new public key, to save their assets after a timelock.
+2) The flow of login with email will be that users put in their email addresses into a website, they get a magic link style email in their inbox from a relayer with a hidden link authorizing an ephemeral key, and any reply to that email confirms that ephemeral key as the signer for that email address on any website. That website can continue to use that browser-specific temporary ECDSA keypair until the user switches devices, at which point they can do the flow again to authorize additional ECDSA keypairs. This will be a completely decentralized drop-in replacement for signin with email for crypto-native apps that expect ECDSA signers.
+
 ## Circom zk-email
 We have [NPM SDKs](https://www.npmjs.com/search?q=%40zk-email) for the frontend functions, circuits, and smart contracts, that should allow you to quickly deploy new circom instances of zk-email.
 
@@ -38,10 +43,10 @@ If you are interested in helping, reach out us on [email](mailto:aayushg@mit.edu
 For more information on how to contribute look at our [contribution guide](https://zkemail.gitbook.io/zk-email/contributing).
 
 Roadmap:
-Q2 2023: Release initial ZK email SDKs. Release MVP of email wallet at Zuzalu.
-Q3 2023: Expand our core repos into more robust SDK, interate with developers, continue to user test the email wallet V0, prototype the email wallet V1.
-Q4 2023: Shipping a V1 zk email wallet on mainnet (with extensions!) on a short-term mainnet demo end to end. Test-drive SDK at Zuconnect Hackathon 2023. Make ZK regex easier to use.
-Q1 2024: Release polished, one-click button integrations for applications with email wallets. Publish a WalletConnect plugin and release a magic.link-style ephemeral key account abstraction solution.
+Q2 2023: Release initial ZK email SDKs. Release MVP of email wallet at Zuzalu. [DONE]
+Q3 2023: Expand our core repos into more robust SDK, interate with developers, continue to user test the email wallet V0, prototype the email wallet V1. [DONE]
+Q4 2023: Shipping a V1 zk email wallet on mainnet (with extensions!) on a short-term mainnet demo end to end. Test-drive SDK at Zuconnect Hackathon 2023. Make ZK regex easier to use. [DONE]
+Q1 2024: Release polished, one-click button integrations for applications with email wallets. Publish a specialized wallet recovery plugin as well as a magic.link-style ephemeral key account abstraction login with zkemail solution.
 Q2 2024: Finish halo2 code audit, as well as a full rewrite with Nova + recursive verification. This will allow a generic email circuit to live on each chain, where people can swap in and out regexes that can be recursively proven in Nova. This will obliviate the need for trusted setups for new zk email proofs, and make audits of future zk email ideas more tighly scoped! 
 
 Our SDK has released a stable 1.0 version as of November, with a first round of audit fixes implemented from Secbit Labs. Note that there may still be breaking, back-incompatible changes pushed.
