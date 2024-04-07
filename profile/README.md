@@ -55,12 +55,13 @@ Q2 2024: Finish halo2 code audit, as well as a full rewrite with Nova + recursiv
 
 Our SDK has released a stable 1.0 version as of November, with a first round of audit fixes implemented from Secbit Labs. Note that there may still be breaking, back-incompatible changes pushed.
 
-Here are specific project ideas, for which we will give a grant for any successful implementation.
+Here are specific project ideas, for which we will give a grant for any successful implementation. Feel free to contact us ([twitter](twitter.com/yush_g), [telegram](t.me/zkemail)) with what you're interested in, for more info on grant amounts.
 
 ### Core Infrastructure Ideas
 
 | Title | Description |
 |-------|-------------|
+| **zkscan** | Improve [zscan](https://github.com/zkHubHQ/zscan/issues/2) to make it work, or build your own zk etherscan-style scanner that lets you see, parse, and verify proofs more easily from on-chain transactions. |
 | **Issue Resolution** | Resolve issues in [zk-email-verify](https://github.com/zkemail/zk-email-verify/issues) or [zk-regex](https://github.com/zkemail/zk-email-verify/issues) repo, which can make the core protocol both faster and more secure! We have marked a number of accessible issues with 'Good First Issue' and 'Help Wanted'. |
 | **Deploy Halo2 Benchmarking Library** | Deploy our [halo2 wasm benchmarking library](https://github.com/Divide-By-0/halo2-secp) to Cargo and NPM as a CLI tool. Alternatively upstream it directly to halo2. Ideally, it comes with an easy-to-use frontend where you can drag-and-drop a WASM or halo2 repo in. Also, add this as a button to [Axiom's halo2repl](https://docs.axiom.xyz/zero-knowledge-proofs/halo2-repl). |
 | **Add Registry to ZK Regex** | Our [regex to circom/halo2 library](https://github.com/zkemail/zk-regex) supports a limited set of regex syntax (specified on [zkregex.com](https://zkregex.com/min_dfa)). Add a registry that lets people choose zk regex circuits. Might be good to approach with Succinct Alpha. |
