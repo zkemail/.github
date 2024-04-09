@@ -24,7 +24,7 @@ We currently have a fast client side proof (~20 seconds) with split-up deployed 
 For server side flows, this has the potential to be very customizable and extensible due to the insane speed of plonky3. We benchmarked RSA-SHA256 and found the unoptimized version to be 11M constraints, an order of magnitude over Tendermint. We think this can be majorly optimized via optimized libraries. We intend to ship an MVP of ZK Email in SP1 as soon as an on-chain verifier is released. However, it will be several months after that until this is as fully audited and battle-tested as circom to be mainnet-ready. However, we are fully ready to throw away our entire serverside circuit codebase if we see performance + security here match circom, due to increased ease of use. We do not think performance will be comparable to halo2.
 
 ## Email Wallet
-Using circom zk-email, we have a demo of a wallet signing flow only using emails instead of traditional seed phrases. You can try our current testnet V0 deployed demo of sending ERC20s via sending emails at [emailwallet.org](https://emailwallet.org), view the docs at [docs.sendeth.org](http://docs.sendeth.org), and see the slides at [slides.prove.email](http://slides.prove.email). We are adding an extensions layer and privacy layer to allow developers to trigger arbitrary Ethereum functions from email subjects, decentralizing and allowing self-hosting the relayer and DKIM key update code, and auditing it for a V1 release. We intend for this to be a powerful web3 onboarding protocol.
+Using circom zk-email, we have a demo of a wallet signing flow only using emails instead of traditional seed phrases. You can try our current testnet V0 deployed demo of sending ERC20s via sending emails at [emailwallet.org](https://emailwallet.org), view the docs at [emailwallet.org/docs](http://emailwallet.org/docs), and see the slides at [prove.email/slides](http://prove.email/slides). We are adding an extensions layer and privacy layer to allow developers to trigger arbitrary Ethereum functions from email subjects, decentralizing and allowing self-hosting the relayer and DKIM key update code, and auditing it for a V1 release. We intend for this to be a powerful web3 onboarding protocol.
 
 ## Relayer
 Our open source [relayer](https://github.com/zkemail/email-wallet/tree/main/packages/relayer) allows anyone to self-host or cloud-host with the ability to:
@@ -42,7 +42,7 @@ We have produced serveral OSS public goods. We would like to publish them on NPM
 ## Help out!
 We are an open source project and decentralized protocol. If you are interested in giving, support us on [Gitcoin Grants](https://explorer.gitcoin.co/#/round/10/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5-62)!
 
-If you are interested in helping, reach out us on [email](mailto:aayushg@mit.edu) or telegram/twitter (yush_g)! We will give a small grant (between $50 - $200) for **all good-faith implementations** of any of the projects or issues below, or any completed end-to-end original idea. 
+If you are interested in helping, reach out us on [email](mailto:aayushg@mit.edu) or [telegram](t.me/zkemail)/[twitter](twitter.com/yush_g)! We will give a small grant (between $50 - $200) for **all good-faith implementations** of any of the projects or issues below, or any completed end-to-end original idea.
 
 For more information on how to contribute look at our [contribution guide](https://zkemail.gitbook.io/zk-email/contributing).
 
