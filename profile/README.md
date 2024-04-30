@@ -2,7 +2,7 @@
 This is the official organization for [Proof of Email](https://prove.email), created by [yush_g](https://twitter.com/yush_g), [sora suegami](https://twitter.com/SoraSue77), and [sampriti](https://twitter.com/sampriti0). Thanks to all current core contributors, including [Saleel](https://twitter.com/_saleel), [Aditya](https://github.com/Bisht13), [Elo](https://github.com/Metachaser24), and [Wataru](https://github.com/wshino). Thanks to [Vivek](https://twitter.com/viv_boop), [Tyler](https://twitter.com/AtHeartEngineer), [Rasul](https://curryrasul.com/), and [Andy](https://twitter.com/AndyGuzmanEth) for helping out from the PSE side, and to the [many  open source contributors](https://github.com/zkemail/zk-email-verify/graphs/contributors) who have made pull requests, and to [0xPARC](https://0xparc.org), [EF PSE](https://pse.dev), and [Gitcoin supporters](https://explorer.gitcoin.co/#/round/137/0xa1d52f9b5339792651861329a046dd912761e9a9/0xa1d52f9b5339792651861329a046dd912761e9a9-17) for providing grants to support this work! You can see applications and links at our main website hub, [prove.email](https://prove.email).
 
 ## Goals for Q1 2024
-By April 2024, we expect to release 1) a custom account recovery solution via email guardians for account abstraction wallets, and 2) a login with zk email flow with ECDSA key authorization. 
+By April 2024, we released 1) a custom account recovery solution via email guardians for account abstraction wallets, and 2) a login with zk email flow with ECDSA key authorization. 
 1) The flow of account recovery will be that AA wallets specify email addresses as guardians, those email addresses receive emails to accept gaurdianship, and if the keys are ever lost and the wallet needs to be recovered, then guardians can simply send an email with the users new public key, to save their assets after a timelock.
 2) The flow of login with email will be that users put in their email addresses into a website, they get a magic link style email in their inbox from a relayer with a hidden link authorizing an ephemeral key, and any reply to that email confirms that ephemeral key as the signer for that email address on any website. That website can continue to use that browser-specific temporary ECDSA keypair until the user switches devices, at which point they can do the flow again to authorize additional ECDSA keypairs. This will be a completely decentralized drop-in replacement for signin with email for crypto-native apps that expect ECDSA signers.
 
@@ -23,10 +23,16 @@ We currently have a fast client side proof (~20 seconds) with split-up deployed 
 
 For server side flows, this has the potential to be very customizable and extensible due to the insane speed of plonky3. We benchmarked RSA-SHA256 and found the unoptimized version to be 11M constraints, an order of magnitude over Tendermint. We think this can be majorly optimized via optimized libraries. We intend to ship an MVP of ZK Email in SP1 as soon as an on-chain verifier is released. However, it will be several months after that until this is as fully audited and battle-tested as circom to be mainnet-ready. However, we are fully ready to throw away our entire serverside circuit codebase if we see performance + security here match circom, due to increased ease of use. We do not think performance will be comparable to halo2.
 
+## Account Recovery
+
+You can use decentralized email gaurdians via zk email to recover your AA wallets, as we describe in [this ZK Summit 11 explainer video](https://www.youtube.com/watch?v=rZTNzvLXB14). We are currently user testing and auditing integrations into Safe, Clave, Soul, Rhinestone, and so on, and expect this to be fully audited and available by the end of Q2 2024. You can try the Base Sepolia testnet demo for Gnosis Safe at [https://prove.email/recovery](prove.email/recovery).
+
 ## Email Wallet
+
 Using circom zk-email, we have a demo of a wallet signing flow only using emails instead of traditional seed phrases. You can try our current testnet V0 deployed demo of sending ERC20s via sending emails at [emailwallet.org](https://emailwallet.org), view the docs at [emailwallet.org/docs](http://emailwallet.org/docs), and see the slides at [prove.email/slides](http://prove.email/slides). We are adding an extensions layer and privacy layer to allow developers to trigger arbitrary Ethereum functions from email subjects, decentralizing and allowing self-hosting the relayer and DKIM key update code, and auditing it for a V1 release. We intend for this to be a powerful web3 onboarding protocol.
 
 ## Relayer
+
 Our open source [relayer](https://github.com/zkemail/email-wallet/tree/main/packages/relayer) allows anyone to self-host or cloud-host with the ability to:
 1) Use our Dockerimage to immediately deploy any ZK proof to a rapid, autoscaled, 64 core proving instance to do proofs in the cloud. Note that privacy will be leaked to AWS in this case, so the only usecase is succinctness.
 2) Interface with the ZK proving protocol via sending emails, via built-in SMTP and IMAP servers that can authenticate with any gmail account
@@ -50,12 +56,16 @@ Roadmap:
 Q2 2023: Release initial ZK email SDKs. Release MVP of email wallet at Zuzalu. [DONE]
 Q3 2023: Expand our core repos into more robust SDK, interate with developers, continue to user test the email wallet V0, prototype the email wallet V1. [DONE]
 Q4 2023: Shipping a V1 zk email wallet on mainnet (with extensions!) on a short-term mainnet demo end to end. Test-drive SDK at Zuconnect Hackathon 2023. Make ZK regex easier to use. [DONE]
-Q1 2024: Release polished, one-click button integrations for applications with email wallets. Publish a specialized wallet recovery plugin as well as a magic.link-style ephemeral key account abstraction login with zkemail solution.
-Q2 2024: Finish halo2 code audit, as well as a full rewrite with Nova + recursive verification. This will allow a generic email circuit to live on each chain, where people can swap in and out regexes that can be recursively proven in Nova. This will obliviate the need for trusted setups for new zk email proofs, and make audits of future zk email ideas more tighly scoped! 
+Q1 2024: Release polished, one-click button integrations for applications with email wallets. [DONE] Release account recovery SDKs and SDKs for people to make new zk email apps, via writing [code in Solidity to parse email subjects](https://github.com/zkemail/ether-email-auth). [DONE]
+Q2 2024: Release 2FA via email modules. Publish a specialized wallet recovery plugin as well as a magic.link-style ephemeral key account abstraction login with zkemail solution. Attempt a rewrite for fast client-side proofs via VOLE/Binius/ZKBoo + Nova-based recursive verifications.
+Q3 2024: Do halo2 rewrite and code audit using Axiom's passthrough recursive verifiers. This will allow a generic email circuit to live on each chain, where people can swap in and out regexes that can be recursively proven in Nova. This will obliviate the need for trusted setups for new zk email proofs, and make audits of future zk email ideas more tighly scoped! 
 
+## Audits
 Our SDK has released a stable 1.0 version as of November, with a first round of audit fixes implemented from Secbit Labs. Note that there may still be breaking, back-incompatible changes pushed.
 
-Here are specific project ideas, for which we will give a grant for any successful implementation. Feel free to contact us ([twitter](twitter.com/yush_g), [telegram](t.me/zkemail)) with what you're interested in, for more info on grant amounts.
+## Grants
+
+Here are specific project ideas, for which we will give a grant for any successful implementation. Feel free to contact us ([twitter](twitter.com/yush_g), [telegram](t.me/zkemail)) with what you're interested in, for more info on grant amounts. Grants can range from $50 - $4000. You can also suggest your own project!
 
 ### Core Infrastructure Ideas
 
