@@ -38,7 +38,8 @@ Our open source [relayer](https://github.com/zkemail/email-wallet/tree/main/pack
 2) Interface with the ZK proving protocol via sending emails, via built-in SMTP and IMAP servers that can authenticate with any gmail account
 
 ## Other public goods
-We have produced serveral OSS public goods. We would like to publish them on NPM and Cargo soon, but till then you can directly refer to these repos.
+
+We have produced several OSS public goods. We would like to publish them on NPM and Cargo soon, but till then you can directly refer to these repos.
 
 - **Halo2 Benchmarking**: We have open sourced a [halo2 wasm benchmarking repo](https://github.com/Divide-By-0/halo2-secp) that runs any halo2 wasm code in the browser on 100 instances in parallel for any browser on any operating system (mobile or desktop), and spits out the mean running time and variance -- we intend to publish this as an easy to use Cargo and NPM package soon for others to use.
 - **Halo2 Optimizations**: We have various halo2 circuits to split verifiers, divide circuits for faster parallel client side proving, and many others.
@@ -46,14 +47,21 @@ We have produced serveral OSS public goods. We would like to publish them on NPM
 - **Circom Hash to Curve on the Grumpkin Curve**: Our [circuits](https://github.com/zkemail/circom-grumpkin) enable proving the private set intersection (PSI) protocol in ZK, which we use for decentralized relayer communication, so that relayers cannot censor unfavorable queries.  
 
 ## Audits
+
 Our SDK has released a stable 1.0 version as of November, with a first round of audit fixes implemented from Secbit Labs. Note that there may still be breaking, back-incompatible changes pushed.
 
 ##  Roadmap
+
 Q2 2023: Release initial ZK email SDKs. Release MVP of email wallet at Zuzalu. [DONE]
+
 Q3 2023: Expand our core repos into more robust SDK, interate with developers, continue to user test the email wallet V0, prototype the email wallet V1. [DONE]
+
 Q4 2023: Shipping a V1 zk email wallet on mainnet (with extensions!) on a short-term mainnet demo end to end. Test-drive SDK at Zuconnect Hackathon 2023. Make ZK regex easier to use. [DONE]
+
 Q1 2024: Release polished, one-click button integrations for applications with email wallets. [DONE] Release account recovery SDKs and SDKs for people to make new zk email apps, via writing [code in Solidity to parse email subjects](https://github.com/zkemail/ether-email-auth). [DONE]
+
 Q2 2024: Release 2FA via email modules. Publish a specialized wallet recovery plugin as well as a magic.link-style ephemeral key account abstraction login with zkemail solution. Attempt a rewrite for fast client-side proofs via VOLE/Binius/ZKBoo + Nova-based recursive verifications.
+
 Q3 2024: Do halo2 rewrite and code audit using Axiom's passthrough recursive verifiers. This will allow a generic email circuit to live on each chain, where people can swap in and out regexes that can be recursively proven in Nova. This will obliviate the need for trusted setups for new zk email proofs, and make audits of future zk email ideas more tighly scoped! 
 
 ## Help out!
