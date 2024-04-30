@@ -19,9 +19,9 @@ We have finished a halo2 version of zk-email, which we expect to 10x improve pro
 
 We currently have a fast client side proof (~20 seconds) with split-up deployed contracts to allow L2 deployments. This can be proved on an L2 for 48M gas [~about $8 on Arbitrum]. We hope to optimize this over time. You can alternatively feed into an autoscaling recursive halo2 aggregator in the cloud with a GPU prover (~300 seconds on a massive machine without a GPU, ~60 seconds with a GPU) that maintains zero knowledge and compresses the proof to about 500K gas, with a ~500MB zkey. We will work on improving both performance and memory over time, and think we can massively improve performance if we continue to invest in this.
 
-## SP1 ZK Email
+## ZK Email in other Higher Level Languages
 
-For server side flows, this has the potential to be very customizable and extensible due to the insane speed of plonky3. We benchmarked RSA-SHA256 and found the unoptimized version to be 11M constraints, an order of magnitude over Tendermint. We think this can be majorly optimized via optimized libraries. We intend to ship an MVP of ZK Email in SP1 as soon as an on-chain verifier is released. However, it will be several months after that until this is as fully audited and battle-tested as circom to be mainnet-ready. However, we are fully ready to throw away our entire serverside circuit codebase if we see performance + security here match circom, due to increased ease of use. We do not think performance will be comparable to halo2.
+For server side flows, SP1 has the potential to be very customizable and extensible due to the insane speed of plonky3. We benchmarked RSA-SHA256 and found the unoptimized version to be 11M constraints, 2 orders of magnitude bigger than ours (and their SHA256 precompile example). We think this can be majorly optimized via optimized libraries like big integer math in SP1. Regex is also similarly 10-100x slower. We expect these library optimizations, on-chain SP1 verifiers, and end to end audits to take until the end of 2024. We intend to ship an MVP of ZK Email in SP1 once those are ready. We are fully ready to throw away our entire circuit codebases if we see performance + security in any higher level language match circom.
 
 ## Account Recovery
 
@@ -45,14 +45,10 @@ We have produced serveral OSS public goods. We would like to publish them on NPM
 - **DKIM Selector Scrapers**: We have a [client-side-only selector scraper website](https://github.com/zkemail/selector-scraper) that we internally use to get selectors for uncommon websites which we have received emails from in the past, which stores it to a database.
 - **Circom Hash to Curve on the Grumpkin Curve**: Our [circuits](https://github.com/zkemail/circom-grumpkin) enable proving the private set intersection (PSI) protocol in ZK, which we use for decentralized relayer communication, so that relayers cannot censor unfavorable queries.  
 
-## Help out!
-We are an open source project and decentralized protocol. If you are interested in giving, support us on [Gitcoin Grants](https://explorer.gitcoin.co/#/round/10/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5-62)!
+## Audits
+Our SDK has released a stable 1.0 version as of November, with a first round of audit fixes implemented from Secbit Labs. Note that there may still be breaking, back-incompatible changes pushed.
 
-If you are interested in helping, reach out us on [email](mailto:aayushg@mit.edu) or [telegram](t.me/zkemail)/[twitter](twitter.com/yush_g)! We will give a small grant (between $50 - $200) for **all good-faith implementations** of any of the projects or issues below, or any completed end-to-end original idea.
-
-For more information on how to contribute look at our [contribution guide](https://zkemail.gitbook.io/zk-email/contributing).
-
-Roadmap:
+##  Roadmap
 Q2 2023: Release initial ZK email SDKs. Release MVP of email wallet at Zuzalu. [DONE]
 Q3 2023: Expand our core repos into more robust SDK, interate with developers, continue to user test the email wallet V0, prototype the email wallet V1. [DONE]
 Q4 2023: Shipping a V1 zk email wallet on mainnet (with extensions!) on a short-term mainnet demo end to end. Test-drive SDK at Zuconnect Hackathon 2023. Make ZK regex easier to use. [DONE]
@@ -60,8 +56,10 @@ Q1 2024: Release polished, one-click button integrations for applications with e
 Q2 2024: Release 2FA via email modules. Publish a specialized wallet recovery plugin as well as a magic.link-style ephemeral key account abstraction login with zkemail solution. Attempt a rewrite for fast client-side proofs via VOLE/Binius/ZKBoo + Nova-based recursive verifications.
 Q3 2024: Do halo2 rewrite and code audit using Axiom's passthrough recursive verifiers. This will allow a generic email circuit to live on each chain, where people can swap in and out regexes that can be recursively proven in Nova. This will obliviate the need for trusted setups for new zk email proofs, and make audits of future zk email ideas more tighly scoped! 
 
-## Audits
-Our SDK has released a stable 1.0 version as of November, with a first round of audit fixes implemented from Secbit Labs. Note that there may still be breaking, back-incompatible changes pushed.
+## Help out!
+We are an open source project and decentralized protocol. If you are interested in giving, support us on [Gitcoin Grants](https://explorer.gitcoin.co/#/round/10/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5-62)!
+
+For more information on how to contribute look at our [contribution guide](https://zkemail.gitbook.io/zk-email/contributing).
 
 ## Grants
 
