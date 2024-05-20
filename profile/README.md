@@ -52,17 +52,25 @@ Our SDK has released a stable 1.0 version as of November, with a first round of 
 
 ##  Roadmap
 
+Our goal is to make the blockchains more accessible via email interfaces, and to make private identity attestations easy and accessible. 
+
+**2023 High Level Plan:** Experiment with anonymous email wallet at a production level, and discover what on-chain tooling to focus on.
+
 Q2 2023: Release initial ZK email SDKs. Release MVP of email wallet at Zuzalu. [DONE]
 
 Q3 2023: Expand our core repos into more robust SDK, interate with developers, continue to user test the email wallet V0, prototype the email wallet V1. [DONE]
 
 Q4 2023: Shipping a V1 zk email wallet on mainnet (with extensions!) on a short-term mainnet demo end to end. Test-drive SDK at Zuconnect Hackathon 2023. Make ZK regex easier to use. [DONE]
 
-Q1 2024: Release polished, one-click button integrations for applications with email wallets. [DONE] Release account recovery SDKs and SDKs for people to make new zk email apps, via writing [code in Solidity to parse email subjects](https://github.com/zkemail/ether-email-auth). [DONE]
+**2024 High Level Plan:** Release and scale production level deployments for account recovery, 2fa, and oauth email login. Innovate and expand on easy and scaled email proofs for identity attestations.
 
-Q2 2024: Release 2FA via email modules. Publish a specialized wallet recovery plugin as well as a magic.link-style ephemeral key account abstraction login with zkemail solution. Attempt a rewrite for fast client-side proofs via VOLE/Binius/ZKBoo + Nova-based recursive verifications.
+Q1 2024: Release polished, one-click button integrations for applications with email wallets. [DONE] Release account recovery SDKs and SDKs for people to make new zk email apps, via writing [code in Solidity to parse email subjects](https://github.com/zkemail/ether-email-auth). [DONE] 
 
-Q3 2024: Do halo2 rewrite and code audit using Axiom's passthrough recursive verifiers. This will allow a generic email circuit to live on each chain, where people can swap in and out regexes that can be recursively proven in Nova. This will obliviate the need for trusted setups for new zk email proofs, and make audits of future zk email ideas more tighly scoped! 
+Q2 2024: Build the [largest DKIM key registry on Earth](https://archive.prove.email) for storing historical DKIM keys. [DONE] Release an MVP for 2FA for gnosis safe email signers. Publish a specialized wallet recovery plugin, as well as a magic.link-style ephemeral key account abstraction login with zkemail solution. Attempt a rewrite for fast client-side proofs via VOLE/Binius/ZKBoo + Nova-based recursive verifications.
+
+Q3 2024: Focus on scaling up our production deployments of account recovery, 2fa, and oauth. Do halo2 rewrites, and replace the recursive proving code with optimistic ZK with AlignedLayer. Focus on shipping many identity attestations via a single email login into Gitcoin Passport and OP Attestation stack. If we have extra time, try to upgrade halo2 to use Axiom's passthrough recursive verifiers, to avoid redeploying new proving keys or infra for each new regex.
+
+Q4 2024: Rewrite all of zk email in Binius? Continue to scale production level code? Start exploring FHE on top of zk email with cursive.team?
 
 ## Help out!
 We are an open source project and decentralized protocol. If you are interested in giving, support us on [Gitcoin Grants](https://explorer.gitcoin.co/#/round/10/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5-62)!
