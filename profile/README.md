@@ -113,7 +113,8 @@ Here are specific project ideas, for which we will give a grant for any successf
 
 | Title | Description |
 |-------|-------------|
-| **ZK PDA** | Build a push down automata the same way we built zk-regex with DFAs, allowing us to parse non regular languages such as JSON as well.
+| **ZK PDA** | Build a push down automata the same way we built zk-regex with DFAs, allowing us to parse non regular languages such as JSON as well. |
+| **ZK Quoted Printable Encoding Circuit** | Build a circuit that verifies if a string has been correctly quoted-printable encoded. We need this for many emails i.e. from Twitter or Instagram. |
 | **zkscan** | Improve [zscan](https://github.com/zkHubHQ/zscan/issues/2) to make it work, or build your own zk etherscan-style scanner that lets you see, parse, and verify proofs more easily from on-chain transactions. Make it so that anyone can automatically parse public inputs from the calldata within the explorer, you can contribute to the trusted setup yourself (on an unofficial fork for the team to adopt if they wish), you can view who contributed to the trusted setup in the past, you can verify what the 'nullifier' value is, you can check what the downstream libraries and circuits used in the circuits are, and you can see the instances of that proof or contract on other blockchains. |
 | **Fix Protonmail DKIM Signatures** | Fix the base64 decoding, decryption, header ordering, and UTF 8 decoding to support Protonmail DKIM verification. More details [here](https://github.com/ProtonMail/proton-bridge/issues/321).
 | **Issue Resolution** | Resolve issues in [zk-email-verify](https://github.com/zkemail/zk-email-verify/issues) or [zk-regex](https://github.com/zkemail/zk-email-verify/issues) repo, which can make the core protocol both faster and more secure! We have marked a number of accessible issues with 'Good First Issue' and 'Help Wanted'. |
