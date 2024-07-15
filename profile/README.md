@@ -38,13 +38,13 @@ You can use email addresses directly as signers on existing Safe{Wallet}s by fol
 
 ## Login with ZK Email
 
-The flow of login with email will be that users put in their email addresses into a website, and then replying to a confirmation email logs them in. Behind the scenes, they are getting an ephemeral ECDSA session key with temporary permissions to the assets in their email wallet. The magic-link-style email comes from a relayer and authorizes the ephemeral key, and any reply to that email confirms that ephemeral key as the signer for that email address on any website. That website can continue to use that browser-specific temporary ECDSA keypair until the user switches or loses their device, at which point they can do the flow again to authorize additional ECDSA keypairs. This will be a completely decentralized drop-in replacement for signin with email for crypto-native apps that expect ECDSA signers. We currently have a spec and expect to release this in Q3 2024.
+The flow of login with email will be that users put in their email addresses into a website, and then replying to a confirmation email logs them in. Behind the scenes, they are getting an ephemeral ECDSA session key with temporary permissions to the assets in their email wallet. The magic-link-style email comes from a relayer and authorizes the ephemeral key, and any reply to that email confirms that ephemeral key as the signer for that email address on any website. That website can continue to use that browser-specific temporary ECDSA keypair until the user switches or loses their device, at which point they can do the flow again to authorize additional ECDSA keypairs. This will be a completely decentralized drop-in replacement for signin with email for crypto-native apps that expect ECDSA signers. We currently have a beta MVP you van try out at [prove.email/docs](https://prove.email/docs) > Oauth API.
 
 ## Relayer
 
 Our open source [relayer](https://github.com/zkemail/email-wallet/tree/main/packages/relayer) allows anyone to self-host or cloud-host with the ability to:
 1) Use our Dockerimage to immediately deploy any ZK proof to a rapid, autoscaled, 64 core proving instance to do proofs in the cloud. Note that privacy will be leaked to AWS in this case, so the only usecase is succinctness.
-2) Interface with the ZK proving protocol via sending emails, via built-in SMTP and IMAP servers that can authenticate with any gmail account
+2) Interface with the ZK proving protocol via sending emails, via built-in SMTP and IMAP servers that can authenticate with any gmail account.
 
 ## Other public goods
 
@@ -52,12 +52,12 @@ We have produced several OSS public goods. We would like to publish them on NPM 
 
 - **Halo2 Benchmarking**: We have open sourced a [halo2 wasm benchmarking repo](https://github.com/Divide-By-0/halo2-secp) that runs any halo2 wasm code in the browser on 100 instances in parallel for any browser on any operating system (mobile or desktop), and spits out the mean running time and variance. We intend to publish this as an easy to use Cargo and NPM package soon for others to use.
 - **Halo2 Optimizations**: We have various halo2 circuits to split verifiers, divide circuits for faster parallel client side proving, and many others.
-- **DKIM Selector Scrapers**: We have a [client-side-only selector scraper website](https://github.com/zkemail/selector-scraper) that we internally use to get selectors for uncommon websites which we have received emails from in the past, which stores it to a database.
+- **DKIM Selector Scrapers**: We have a [DKIM key and selector archive](https://archive.prove.email) that anyone can contribute to, and that we use to get selectors for uncommon websites which we have received emails from in the past, and stores it to a database.
 - **Circom Hash to Curve on the Grumpkin Curve**: Our [circuits](https://github.com/zkemail/circom-grumpkin) enable proving the private set intersection (PSI) protocol in ZK, which we use for decentralized relayer communication, so that relayers cannot censor unfavorable queries.  
 
 ## Audits
 
-Our SDK has released a stable 1.0 version as of November, with a first round of audit fixes implemented from Secbit Labs. Note that there may still be breaking, back-incompatible changes pushed.
+Our SDK has had several audits -- one by Y Academy and Secbit Labs in November 2023, three by PSE Security on the circuits, email-wallet, and account recovery, one by Ackee on account recovery smart contracts, and one by ZKSecurity on the circuits. We released a stable 1.0 version in November 2023, our latest audited versions in Summer 2024. You can aee report PDFs and fixes in our [docs](https://zkemail.gitbook.io/zk-email/zk-email-verifier).
 
 ##  Roadmap
 
@@ -71,7 +71,7 @@ Q3 2023: Expand our core repos into more robust SDK, interate with developers, c
 
 Q4 2023: Shipping a V1 zk email wallet on mainnet (with extensions!) on a short-term mainnet demo end to end. Test-drive SDK at Zuconnect Hackathon 2023. Make ZK regex easier to use. [DONE]
 
-**2024 High Level Plan:** Release and scale production level deployments for account recovery, 2fa, and oauth email login. Innovate and expand on easy and scaled email proofs for identity attestations.
+**2024 High Level Plan:** Release and scale production level deployments for account recovery, 2fa, and oauth email login. Innovate and expand on easy and scaled email proofs for identity attestations. Make all SDKs simple enough to implement in 10 lines of code.
 
 Q1 2024: Release polished, one-click button integrations for applications with email wallets. [DONE] Release account recovery SDKs and SDKs for people to make new zk email apps, via writing [code in Solidity to parse email subjects](https://github.com/zkemail/ether-email-auth). [DONE] 
 
@@ -116,6 +116,7 @@ Here are specific project ideas, for which we will give a grant for any successf
 |-------|-------------|
 | **ZK PDA** | Build a push down automata the same way we built zk-regex with DFAs, allowing us to parse non regular languages such as JSON as well. |
 | **ZK Quoted Printable Decoding Circuit** | Build a circuit that verifies if a string has been correctly [quoted-printable decoded](https://github.com/mathiasbynens/quoted-printable/blob/7d490479723245f61c816c584fac41ba8e9cbdb5/src/quoted-printable.js#L21). We need this for many emails i.e. from Twitter or Instagram. I think it's easier than encoding.|
+| **RSA Precompile in SP1** | Optimize the bigint library and RSA implementation in SP1. |
 | **zkscan** | Improve [zscan](https://github.com/zkHubHQ/zscan/issues/2) to make it work, or build your own zk etherscan-style scanner that lets you see, parse, and verify proofs more easily from on-chain transactions. Make it so that anyone can automatically parse public inputs from the calldata within the explorer, you can contribute to the trusted setup yourself (on an unofficial fork for the team to adopt if they wish), you can view who contributed to the trusted setup in the past, you can verify what the 'nullifier' value is, you can check what the downstream libraries and circuits used in the circuits are, and you can see the instances of that proof or contract on other blockchains. |
 | **Fix Protonmail DKIM Signatures** | Fix the base64 decoding, decryption, header ordering, and UTF 8 decoding to support Protonmail DKIM verification. More details [here](https://github.com/ProtonMail/proton-bridge/issues/321).
 | **Issue Resolution** | Resolve issues in [zk-email-verify](https://github.com/zkemail/zk-email-verify/issues) or [zk-regex](https://github.com/zkemail/zk-email-verify/issues) repo, which can make the core protocol both faster and more secure! We have marked a number of accessible issues with 'Good First Issue' and 'Help Wanted'. |
