@@ -3,18 +3,21 @@ This is the official organization for [ZK Email](https://prove.email), created b
 
 On this guide, you can see a breakdown of each main product/repository, a [timeline](https://github.com/zkemail#roadmap) describing our future roadmap, and a set of [related project ideas](https://github.com/zkemail#grants)!
 
+## [ZK Email Proof Registry](https://registry-dev.zkregex.com/)
+
+We have released a simple registry and SDK where you can define a new kind of proof in just a few minutes, and will automatically deploy infrastructure, a base repository, and on-chain verifiers for you, and then expose an SDK where you can use it from your frontend in just a few lines. We have [a beta version](https://registry-dev.zkregex.com/) up, but are working on increasing scalability, making the SDK, and adding more prover backends (Noir, SP1) to make it easier to use. We hope that all proofs in the future go through this infrastructure due to its ease of use.
+
 ## Circom zk-email
 We have [NPM SDKs](https://www.npmjs.com/search?q=%40zk-email) for the frontend functions, circuits, and smart contracts, that should allow you to quickly deploy new circom instances of zk-email.
 
-We have an [end-to-end circom implementation](https://github.com/zkemail/zk-email-verify/) with a live demo for Proof-of-Twitter NFTs on Goerli at [https://zkemail.xyz](https://zkemail.xyz). Circom shines with it's succinctness and server-side speed, which proves zk-email circuits in under 30 seconds. On the client side, it takes about 6 minutes to run in browser and does a 1gb download, hence our desire to work on a halo2 version. 
+We have an [end-to-end circom implementation](https://github.com/zkemail/zk-email-verify/) with a live demo for Proof-of-Twitter NFTs on Goerli at [https://zkemail.xyz](https://zkemail.xyz). Circom proofs are short to verify on chain and very fast on a server with a GPU -- zk-email circuits server side are under 8 seconds with a GPU proof in general, and under 20 seconds even for the beefy Twitter proofs. On the client side, small proofs like subject proofs, or JWT proofs can happen in under 20-30 seconds. If you want to do body parsing, you should expect those client side proofs in Circom to not be very performant -- Twitter body proofs take about 4 minutes to run in browser after a 1gb download. Note that Noir proofs are substantially faster client side and will soon be the default in the SDK.
 
 ## ZK Regex
-In order construct new proofs, we also have a [regex library that does circom/halo2 codegen for arbitrary regex strings via configuration files and a CLI](https://github.com/zkemail/zk-regex), as well as a [DFA visualization site](https://zkregex.com/min_dfa) to help you convert a regex into the same states as our circom generator \[thanks to CyberZHG for the base repo\]. Thanks to Javier for a [work in progress UI](https://zk-regex-ui.pages.dev/) to convert regexes to circom circuits rapidly. 
+In order construct bespoke regexes or manually generate circom code, we also have a [regex library that does circom/halo2 codegen for arbitrary regex strings via configuration files and a CLI](https://github.com/zkemail/zk-regex), as well as a [DFA visualization site](https://zkregex.com/min_dfa) for the old regex compiler that gives you an idea of how we visualize the DFA states (though that latter website is now a bit outdated). Note that the new compiler will be doubly audited by mid October 2024.
 
-## Halo2 zk-email
-We have finished a halo2 version of zk-email, which we expect to 10x improve proving speed for zk-email applications that require client side privacy. To do so, we pair our zk-regex library with the [halo2-regex circuits](https://github.com/zk-email-verify/halo2-regex/) that create arbitrary regex circuits in halo2. We also have custom [base64 encoding + decoding circuit](https://github.com/zk-email-verify/halo2-base64) and the first-ever [halo2 RSA + SHA256](https://github.com/zk-email-verify/halo2-rsa) built with Axiom's flexgates and optimizing Brechtpd + PSE's SHA256. These public goods have been used for several applications regarding provenant data in the wild, but the halo2 work has not been audited yet. We have heavily optimized for proving-time, and we expect all of our circuits to be verified recusively on chain cheaply. 
+## ZK Email in Noir
 
-We currently have a fast client side proof (~20 seconds) with split-up deployed contracts to allow L2 deployments. This can be proved on an L2 for 48M gas [~about $8 on Arbitrum]. We hope to optimize this over time. You can alternatively feed into an autoscaling recursive halo2 aggregator in the cloud with a GPU prover (~300 seconds on a massive machine without a GPU, ~60 seconds with a GPU) that maintains zero knowledge and compresses the proof to about 500K gas, with a ~500MB zkey. We will work on improving both performance and memory over time, and think we can massively improve performance if we continue to invest in this.
+With Zac's latest sprints on ZK Email primitives like RSA, JSON, and SHA256, we have been able to release a [ZK Email Noir](https://github.com/zkemail/zkemail.nr) version in collaboration with Mach34. It is extremely performant on the client side, being ~2x faster on small proofs and ~5-10x speedups on the larger proofs. We will migrate all of our client side proofs to this soon.
 
 ## ZK Email in other Higher Level Languages
 
@@ -40,24 +43,9 @@ You can use email addresses directly as signers on existing Safe{Wallet}s by fol
 
 The flow of login with email will be that users put in their email addresses into a website, and then replying to a confirmation email logs them in. Behind the scenes, they are getting an ephemeral ECDSA session key with temporary permissions to the assets in their email wallet. The magic-link-style email comes from a relayer and authorizes the ephemeral key, and any reply to that email confirms that ephemeral key as the signer for that email address on any website. That website can continue to use that browser-specific temporary ECDSA keypair until the user switches or loses their device, at which point they can do the flow again to authorize additional ECDSA keypairs. This will be a completely decentralized drop-in replacement for signin with email for crypto-native apps that expect ECDSA signers. We currently have a beta MVP you van try out at [prove.email/docs](https://prove.email/docs) > Oauth API.
 
-## Relayer
-
-Our open source [relayer](https://github.com/zkemail/email-wallet/tree/main/packages/relayer) allows anyone to self-host or cloud-host with the ability to:
-1) Use our Dockerimage to immediately deploy any ZK proof to a rapid, autoscaled, 64 core proving instance to do proofs in the cloud. Note that privacy will be leaked to AWS in this case, so the only usecase is succinctness.
-2) Interface with the ZK proving protocol via sending emails, via built-in SMTP and IMAP servers that can authenticate with any gmail account.
-
-## Other public goods
-
-We have produced several OSS public goods. We would like to publish them on NPM and Cargo soon, but till then you can directly refer to these repos.
-
-- **Halo2 Benchmarking**: We have open sourced a [halo2 wasm benchmarking repo](https://github.com/Divide-By-0/halo2-secp) that runs any halo2 wasm code in the browser on 100 instances in parallel for any browser on any operating system (mobile or desktop), and spits out the mean running time and variance. We intend to publish this as an easy to use Cargo and NPM package soon for others to use.
-- **Halo2 Optimizations**: We have various halo2 circuits to split verifiers, divide circuits for faster parallel client side proving, and many others.
-- **DKIM Selector Scrapers**: We have a [DKIM key and selector archive](https://archive.prove.email) that anyone can contribute to, and that we use to get selectors for uncommon websites which we have received emails from in the past, and stores it to a database.
-- **Circom Hash to Curve on the Grumpkin Curve**: Our [circuits](https://github.com/zkemail/circom-grumpkin) enable proving the private set intersection (PSI) protocol in ZK, which we use for decentralized relayer communication, so that relayers cannot censor unfavorable queries.  
-
 ## Audits
 
-Our SDK has had several audits -- one by Y Academy and Secbit Labs in November 2023, three by PSE Security on the circuits, email-wallet, and account recovery, one by Ackee on account recovery smart contracts, and one by ZKSecurity on the circuits. We released a stable 1.0 version in November 2023, our latest audited versions in Summer 2024. You can aee report PDFs and fixes in our [docs](https://zkemail.gitbook.io/zk-email/zk-email-verifier).
+Our SDK has had several audits -- one by Y Academy and Secbit Labs in November 2023, three by PSE Security on the circuits, email-wallet, and account recovery, one by Ackee on account recovery smart contracts, one by ZKSecurity on the circuits, and one by Zellic on ether-email-auth. We released a stable 1.0 version in November 2023, our latest audited versions in Fall 2024. You can aee report PDFs and fixes in our [docs](https://zkemail.gitbook.io/zk-email/audits).
 
 ##  Roadmap
 
@@ -138,3 +126,23 @@ These ideas primarily revolve around making our infrastructure faster or more ge
 | **Deploy Package/Website to Auto-deploy Autoscaled Circom Prover Endpoint** | Our [relayer coordinator]([https://github.com/zkemail/zk-regex](https://github.com/zkemail/relayer/blob/main/coordinator.py)) has a [Docker image](https://github.com/zkemail/relayer/blob/main/Dockerfile) for a rapidsnark prover that can store a circom zkey, then have a modal API endpoint and which to receive an input.json. This infrastructure can easily be made into a broader public good with a simple frontend that lets anyone upload whatever circom file they want, then automatically deploy an endpoint for them that would zk-prove it, or a button on zkrepl. |
 | **ZK Regex Feature Parity** | Convert zkregex.com to use our new zk-regex library. |
 | **Rust IMAP** | The implementations of rust imap in the default Rust imap crate are very bad and often drop the connection and stop tracking emails. Resolve issues on that repo. |
+
+## Other public goods
+
+We have produced several OSS public good repositories.
+
+- **Halo2 Benchmarking**: We have open sourced a [halo2 wasm benchmarking repo](https://github.com/Divide-By-0/halo2-secp) that runs any halo2 wasm code in the browser on 100 instances in parallel for any browser on any operating system (mobile or desktop), and spits out the mean running time and variance. We intend to publish this as an easy to use Cargo and NPM package soon for others to use.
+- **Halo2 Optimizations**: We have various halo2 circuits to split verifiers, divide circuits for faster parallel client side proving, and many others.
+- **DKIM Selector Scrapers**: We have a [DKIM key and selector archive](https://archive.prove.email) that anyone can contribute to, and that we use to get selectors for uncommon websites which we have received emails from in the past, and stores it to a database.
+- **Circom Hash to Curve on the Grumpkin Curve**: Our [circuits](https://github.com/zkemail/circom-grumpkin) enable proving the private set intersection (PSI) protocol in ZK, which we use for decentralized relayer communication, so that relayers cannot censor unfavorable queries.
+
+### Halo2 zk-email
+We had previously prioritized a halo2 version of zk-email, but unfortunately halo2 is not being particularly actively maintained in the long term. It did roughly 10x improve browser proving speed for zk-email applications that required client side privacy. To do so, we paired our zk-regex library with the [halo2-regex circuits](https://github.com/zk-email-verify/halo2-regex/) that create arbitrary regex circuits in halo2. We also made custom [base64 encoding + decoding circuit](https://github.com/zk-email-verify/halo2-base64) and the first-ever [halo2 RSA + SHA256](https://github.com/zk-email-verify/halo2-rsa) built with Axiom's flexgates and optimizing Brechtpd + PSE's SHA256. These public goods have been used for several applications regarding provenant data in the wild, but the halo2 work has not been audited yet. We have heavily optimized for proving-time, and we expect all of our circuits to be verified recusively on chain cheaply. 
+
+We currently have a fast client side proof (~20 seconds) with split-up deployed contracts to allow L2 deployments. This can be proved on an L2 directly for 48M gas [~about $8 on Arbitrum], or fed into an autoscaling recursive halo2 aggregator in the cloud with a GPU prover (~60 seconds with a GPU, probably less with multiple GPUs) that maintains zero knowledge and compresses the proof to about 500K gas, with a ~500MB zkey. We hoped to improve both performance and memory over time.
+
+### Relayer
+
+Our open source [relayer](https://github.com/zkemail/email-wallet/tree/main/packages/relayer) allows anyone to self-host or cloud-host with the ability to:
+1) Use our Dockerimage to immediately deploy any ZK proof to a rapid, autoscaled, 64 core proving instance to do proofs in the cloud. Note that privacy will be leaked to AWS in this case, so the only usecase is succinctness.
+2) Interface with the ZK proving protocol via sending emails, via built-in SMTP and IMAP servers that can authenticate with any gmail account.
