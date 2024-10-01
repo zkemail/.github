@@ -5,7 +5,7 @@ On this guide, you can see a breakdown of each main product/repository, a [timel
 
 ## [ZK Email Proof Registry](https://registry-dev.zkregex.com/)
 
-We have released a simple registry and SDK where you can define a new kind of proof in just a few minutes, and will automatically deploy infrastructure, a base repository, and on-chain verifiers for you, and then expose an SDK where you can use it from your frontend in just a few lines. We have [a beta version](https://registry-dev.zkregex.com/) up, but are working on increasing scalability, making the SDK, and adding more prover backends (Noir, SP1) to make it easier to use. We hope that all proofs in the future go through this infrastructure due to its ease of use.
+We have released a simple registry and SDK where you can define a new kind of proof in just a few minutes, and will automatically deploy infrastructure, a base repository, and on-chain verifiers for you, and then expose an SDK where you can use it from your frontend in just a few lines. We have [a beta version](https://registry-dev.zkregex.com/) up for server-side circom, but are working on increasing scalability, making the SDK, and adding more prover backends (Noir, SP1) to make it easier to use. We hope that all proofs in the future go through this infrastructure due to its ease of use.
 
 ## Circom zk-email
 We have [NPM SDKs](https://www.npmjs.com/search?q=%40zk-email) for the frontend functions, circuits, and smart contracts, that should allow you to quickly deploy new circom instances of zk-email.
