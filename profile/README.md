@@ -17,7 +17,7 @@ In order construct bespoke regexes or manually generate circom code, we also hav
 
 ## ZK Email in Noir
 
-With Zac's latest sprints on ZK Email primitives like RSA, JSON, and SHA256, we have been able to release a [ZK Email Noir](https://github.com/zkemail/zkemail.nr) version in collaboration with Mach34. It is extremely performant on the client side, being ~2x faster on small proofs and ~5-10x speedups on the larger proofs. We will migrate all of our client side proofs to this soon.
+With Zac's latest sprints on ZK Email primitives like RSA, JSON, and SHA256, we have been able to release a [ZK Email Noir](https://github.com/zkemail/zkemail.nr) version in collaboration with Mach34. It is extremely performant on the client side, being ~2x faster on small proofs and ~5-10x speedups on the larger proofs. We will migrate all of our client side proofs to this soon. At the current moment, due to their slow witness generation, our circom ZK Email code on GPU is still faster on the server side. Soon, our Registry + SDK will compile to Noir as well!
 
 ## ZK Email in other Higher Level Languages
 
