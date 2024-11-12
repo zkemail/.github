@@ -53,7 +53,7 @@ We've archived over a million DKIM public keys at [archive.prove.email](https://
 
 ## Audits
 
-Our SDK has had several audits -- one by Y Academy and Secbit Labs in November 2023, three by PSE Security on the circuits, email-wallet, and account recovery, one by Ackee on account recovery smart contracts, one by ZKSecurity on the circuits, one by Zellic on ether-email-auth, and one by Matter Labs on the end-to-end system. We released a stable 1.0 version in November 2023, our latest audited versions in Fall 2024. You can aee report PDFs and fixes in our [docs](https://zkemail.gitbook.io/zk-email/audits).
+Our SDK has had several audits -- one by Y Academy and Secbit Labs in November 2023, three by PSE Security on the circuits, email-wallet, and account recovery, one by Ackee on account recovery smart contracts, one by ZKSecurity on the circuits, one by Zellic on ether-email-auth, and one by Matter Labs on the end-to-end system. We released a stable 1.0 version in November 2023, our latest audited versions in Fall 2024. You can aee report PDFs and fixes in our [docs](https://docs.prove.email/audits).
 
 ##  Roadmap
 
@@ -73,14 +73,14 @@ Q1 2024: Release polished, one-click button integrations for applications with e
 
 Q2 2024: Build the [largest DKIM key registry on Earth](https://archive.prove.email) for storing historical DKIM keys. [DONE] Release an MVP for 2FA for gnosis safe email signers. [DONE, live on emailwallet.org] Publish a specialized wallet recovery plugin [DONE], as well as a magic.link-style ephemeral key account abstraction login with zkemail solution [SPEC DONE]. Attempt a rewrite for fast client-side proofs via ZKBoo [DONE]/VOLE/Binius + Nova-based [DONE] recursive verifications. Audit latest ZK Email circuits and regex updates again. [DONE]
 
-Q3 2024: Release a [registry for all existing ZK email proofs](https://registry-dev.zkregex.com/) and regexes, and [an SDK](https://zkemail.gitbook.io/zk-email/zk-email-sdk) by which to make new proofs or access existing proofs in a small handful of lines of Typescript. [DONE] Focus on auditing and scaling up our production deployments of account recovery [DONE], 2fa, and oauth. Finish [a Noir version](https://github.com/zkemail/zkemail.nr) [DONE]. Deploy account recovery to mainnet for Soul Wallet [DONE] and Clave Wallet [DONE].
+Q3 2024: Release a [registry for all existing ZK email proofs](https://sdk.prove.email/) and regexes, and [an SDK](https://docs.prove.email/zk-email-sdk) by which to make new proofs or access existing proofs in a small handful of lines of Typescript [DONE]. Focus on auditing and scaling up our production deployments of account recovery [DONE], 2fa, and oauth. Finish [a Noir version](https://github.com/zkemail/zkemail.nr) [DONE]. Deploy account recovery to mainnet for Soul Wallet [DONE].
 
-Q4 2024: Rewrite all of zk email in Noir and SP1 [DONE], and natively integrate that into the registry. Deploy better, more scalable infra for the registry proofs. Continue to scale production level code, and add account recovery to more wallets. Add anonymous domain validation for full anonymity, and support more builders building Noir proofs. Add and natively integrate into Safe. Maybe add a public key registry with an AVS? Add aggregation for the recursive proofs with Axiom or Nebra?
+Q4 2024: Rewrite all of zk email in Noir [DONE](https://github.com/zkemail/zkemail.nr/) and SP1 [DONE](https://github.com/zkemail/zkemail.rs/), and natively integrate that into the registry. Deploy better, more scalable infra for the registry proofs. Continue to scale production level code, and add account recovery to more wallets. Add anonymous domain validation for full anonymity, and support more builders building Noir proofs. Add mainnet deployments of account recovery to Clave [DONE] and Safe. Maybe add an on-chain dkim/public key/dns registry with an AVS? Add aggregation for the recursive proofs with Axiom or Nebra?
 
 ## Help out!
 We are an open source project and decentralized protocol. If you are interested in giving, support us on [Gitcoin Grants](https://explorer.gitcoin.co/#/round/10/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5/0x9331fde4db7b9d9d1498c09d30149929f24cf9d5-62)!
 
-For more information on how to contribute look at our [contribution guide](https://zkemail.gitbook.io/zk-email/contributing).
+For more information on how to contribute look at our [contribution guide](https://docs.prove.email/contributing).
 
 ## Grants
 
