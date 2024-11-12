@@ -47,6 +47,10 @@ The flow of login with email will be that users put in their email addresses int
 
 You can use Google login JWTs via our [JWT transaction builder](https://github.com/zkemail/jwt-tx-builder). This lets you automatically use a ZK proof of a JWT to trigger any on chain action, prove you own an email for some domain, and prove you own an email for some domain in a set of domains. You can try our demo for this at [jwt.zk.email](https://jwt.zk.email).
 
+## Archive
+
+We've archived over a million DKIM public keys at [archive.prove.email](https://archive.prove.email) and read about how we did it (and recovered lost old keys) on [our blog post](https://prove.email/blog/archive)! We also expose a nice API for anyone to use to query this archive for selectors and public keys.
+
 ## Audits
 
 Our SDK has had several audits -- one by Y Academy and Secbit Labs in November 2023, three by PSE Security on the circuits, email-wallet, and account recovery, one by Ackee on account recovery smart contracts, one by ZKSecurity on the circuits, one by Zellic on ether-email-auth, and one by Matter Labs on the end-to-end system. We released a stable 1.0 version in November 2023, our latest audited versions in Fall 2024. You can aee report PDFs and fixes in our [docs](https://zkemail.gitbook.io/zk-email/audits).
