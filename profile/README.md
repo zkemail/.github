@@ -1,7 +1,7 @@
 # [ZK Email](https://prove.email)
 This is the official organization for [ZK Email](https://prove.email), created by [yush_g](https://twitter.com/yush_g), [sora suegami](https://twitter.com/SoraSue77), and [sampriti](https://twitter.com/sampriti0). Thanks to all core contributors, including [Aditya](https://github.com/Bisht13), [Shubham](https://github.com/wryonik/), [Wataru](https://github.com/wshino), [Shreyas](https://github.com/shreyas-londhe), and [Prakhar](https://github.com/PrakharSingh0908). Thanks to [Vivek](https://twitter.com/viv_boop), [Tyler](https://twitter.com/AtHeartEngineer), [Rasul](https://curryrasul.com/), [John](https://github.com/JohnGuilding), [Saleel](https://twitter.com/_saleel), and [Elo](https://github.com/Metachaser24), for helping out from the PSE side, to the [many open source contributors](https://github.com/zkemail/zk-email-verify/graphs/contributors) who have made pull requests, and to [0xPARC](https://0xparc.org), [EF PSE](https://pse.dev), and [Gitcoin supporters](https://explorer.gitcoin.co/#/round/137/0xa1d52f9b5339792651861329a046dd912761e9a9/0xa1d52f9b5339792651861329a046dd912761e9a9-17) for providing grants to support this work! You can see applications and links at [zk.email](https://zk.email) and follow our progress on Twitter on [@zkemail](https://twitter.com/zkemail).
 
-On this guide, you can see a breakdown of each main product/repository, a [timeline](https://github.com/zkemail#roadmap) describing our future roadmap, and [project ideas](https://github.com/zkemail#grants)!
+On this guide, you can see a breakdown of each main product/repository, a [timeline](https://github.com/zkemail#roadmap) describing our future roadmap, and [project ideas](https://github.com/zkemail#project-ideas)!
 
 ## [ZK Email Proof Registry](https://registry.zk.email/)
 
@@ -86,9 +86,9 @@ We are an open source project and decentralized protocol. If you are interested 
 
 For more information on how to contribute look at our [contribution guide](https://docs.zk.email/contributing).
 
-## Grants
+## Contributing
 
-Here are specific project ideas, for which we will give a grant for any successful implementation. Feel free to contact us ([twitter](twitter.com/yush_g), [telegram](t.me/zkemail)) with what you're interested in, for more info on grant amounts. Grants can range from $50 - $4000. You can also suggest your own project! If you want to start with something much smaller, consider resolving issues in one of our repos like [zk-email-verify](https://github.com/zkemail/zk-email-verify/issues) or [view all the open issues through our org](https://github.com/search?o=desc&q=org%3Azkemail++&s=created&type=Issues&state=open) instead, which can make the core protocol both faster and more secure! We have marked a number of accessible issues with 'Good First Issue' and 'Help Wanted'.
+Here are specific project ideas you can build. You can also suggest your own project! If you want to start with something much smaller, consider resolving issues in one of our repos like [zk-email-verify](https://github.com/zkemail/zk-email-verify/issues) or [view all the open issues through our org](https://github.com/search?o=desc&q=org%3Azkemail++&s=created&type=Issues&state=open) instead, which can make the core protocol both faster and more secure! We have marked a number of accessible issues with 'Good First Issue' and 'Help Wanted'.
 
 ### Project Ideas
 
